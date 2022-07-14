@@ -4,10 +4,10 @@ USE ieee.std_logic_1164.all;
 entity mux is
 port (
 
-            a       : in std_logic_vector (3 downto 0);
-            b       : in std_logic_vector (3 downto 0);
+            a       : in std_logic;
+            b       : in std_logic;
             enable  : in std_logic;
-            saida   : out std_logic_vector(3 downto 0)
+            saida   : out std_logic
 
         );
 end mux;

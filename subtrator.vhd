@@ -6,7 +6,7 @@ entity subtrator is
 
 	generic 
 	(
-	DATA_WIDTH : natural := 16
+	DATA_WIDTH : natural := 5
 	);
 
 	port

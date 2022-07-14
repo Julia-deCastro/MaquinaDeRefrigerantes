@@ -6,7 +6,7 @@ entity comparador_zero is
 
     generic
     (
-        DATA_WIDTH : natural := 16
+        DATA_WIDTH : natural := 5
     );
 
     port
@@ -22,7 +22,7 @@ begin
 
     process(a)
     begin
-        if(a = x"0000") then
+        if(a > "00000") then
             a_eq_0 <= '1';
         else 
             a_eq_0 <= '0';
