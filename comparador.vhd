@@ -24,10 +24,10 @@ begin
     process(a,b)
     begin
 
-        if (a < b) then
-            a_gt_b <= '0';
-        else
+        if (a > b) then
             a_gt_b <= '1';
+        else
+            a_gt_b <= '0';
         end if;
 
     end process;

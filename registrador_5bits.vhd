@@ -13,7 +13,7 @@ end registrador_5bits;
 
 architecture rtl of registrador_5bits is 
 begin
-    process(clock, registrador_in, registrador_clr)
+    process(clock, registrador_in, registrador_clr, registrador_ld)
     begin
         if(registrador_clr = '1') then
             registrador_out <= "00000";

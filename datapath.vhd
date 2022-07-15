@@ -154,8 +154,8 @@ architecture rtl of datapath is
 	 signal  b : std_logic := '0';
 	 
 	 signal  subtratorOut : std_logic_vector(4 downto 0);
-	 signal  subtrator_estoque1Out : std_logic_vector(4 downto 0);
-	 signal  subtrator_estoque2Out : std_logic_vector(4 downto 0);
+	 signal  subtrator_estoque1Out : std_logic_vector(4 downto 0) := "00000";
+	 signal  subtrator_estoque2Out : std_logic_vector(4 downto 0) := "00000";
 	 signal  subtrator16Out1 : std_logic_vector(DATA_WIDTH-1 downto 0);
 	 signal  subtrator16Out2 : std_logic_vector(DATA_WIDTH-1 downto 0);
 	 
@@ -209,7 +209,7 @@ architecture rtl of datapath is
 	TROCO_1 <= subtrator16Out1;
 	TROCO_2 <= subtrator16Out2;
 	QNT_ESTOQUE_1 <= subtrator_estoque1Out;
-	QNT_ESTOQUE_2 <= subtrator_estoque1Out;
+	QNT_ESTOQUE_2 <= subtrator_estoque2Out;
 
 	
 end rtl;

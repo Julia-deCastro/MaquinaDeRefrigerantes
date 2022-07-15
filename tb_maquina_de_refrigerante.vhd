@@ -76,14 +76,14 @@ end component;
 																							
 	  
 		clock <= not(clock) after 5 ns;
-		SELECT_1 <= '0', '1' after 5 ns, '0' after 10 ns;
-		MOEDA_SIGNAL <= '0', '1' after 20 ns, '0' after 25 ns, '1' after 30 ns, '0' after 35 ns, '1' after 40 ns, '0' after 45 ns, '1' after 50 ns, '0' after 55 ns;
-		MOEDA <= x"0000", x"0004" after 20 ns;
-		CONFIRMA <= '0', '1' after 60 ns;
-		CANCELA <= '0';
+		SELECT_1 <= '1', '1' after 5 ns; -- '0' after 10 ns;
+		SELECT_2 <= '0';
+		MOEDA_SIGNAL <= '0', '1' after 16 ns, '0' after 17 ns;-- '1' after 30 ns, '0' after 35 ns, '1' after 40 ns, '0' after 45 ns, '1' after 50 ns, '0' after 55 ns;
+		MOEDA <= x"0000", x"0002" after 5 ns;
+		CONFIRMA <= '0', '1' after 60 ns, '0' after 75 ns;
+		CANCELA <= '0', '0' after 100 ns;
 		
 		CEDULA_SIGNAL <= '0';
-		SELECT_2 <= '0';
 		CEDULA <= x"0000";
 		SELECT_0 <= '0';
 		  	

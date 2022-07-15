@@ -19,7 +19,6 @@ entity maquina_de_refrigerante is
 	SELECT_2             : in std_logic;
 	CONFIRMA				   : in std_logic;
 	CANCELA				   : in std_logic;
-	LIB						: out std_logic;	
 	LIBERAR					: out std_logic;
 	TROCO				      : out std_logic;
 	FREE_CASH				: out std_logic;
@@ -47,7 +46,6 @@ architecture rtl of maquina_de_refrigerante is
 	signal ESTOQUE2_LD, ESTOQUE2_CLR, RG_REFRI_LD, RG_REFRI_CLR               						: std_logic;
 	signal VI_eq_VR1, VI_gt_VR1, VI_eq_VR2, VI_gt_VR2, SELECTED_REFRI									: std_logic;
 	signal ESTOQUE1_gt_O, ESTOQUE2_gt_O												 							: std_logic;
-	signal LIBE											 							: std_logic;
 	
 	component controladora is
 	port(
@@ -59,7 +57,6 @@ architecture rtl of maquina_de_refrigerante is
 		SELECT_2             : in std_logic;
 		CONFIRMA				   : in std_logic;
 		CANCELA				   : in std_logic;
-		LIB						: out std_logic;
 		LIBERAR					: out std_logic;
 		TROCO				      : out std_logic;
 		FREE_CASH				: out std_logic;
@@ -76,8 +73,7 @@ architecture rtl of maquina_de_refrigerante is
 		ESTOQUE2_CLR			: out std_logic;
 		RG_REFRI_LD    		: out std_logic;
 		RG_REFRI_CLR 			: out std_logic;
-		--SELECT_ 					: out std_logic;
-		
+		--SELECT_ 					: out std_logic;	
 
 		VI_eq_VR1				: in std_logic; 		-- Valor inserido = Valor Refri 1
 		VI_gt_VR1				: in std_logic;  		-- Valor inserido > Valor Refri 1 
@@ -85,7 +81,7 @@ architecture rtl of maquina_de_refrigerante is
 		VI_gt_VR2				: in std_logic;  		-- Valor inserido > Valor Refri 2
 		SELECTED_REFRI			: in std_logic;		-- Refri selecionado
 		ESTOQUE1_gt_O 			: in std_logic;		-- Estoque 1 > 0
-		ESTOQUE2_gt_O 			: in std_logic	:= '0'		-- Estoque 2 > 0
+		ESTOQUE2_gt_O 			: in std_logic			-- Estoque 2 > 0
 
 		
 	);
@@ -135,7 +131,7 @@ architecture rtl of maquina_de_refrigerante is
 	
 	begin
 
-		instancia_controladora : controladora port map(CLOCK, CEDULA_SIGNAL, MOEDA_SIGNAL, SELECT_1, SELECT_2, CONFIRMA, CANCELA, LIBE,
+		instancia_controladora : controladora port map(CLOCK, CEDULA_SIGNAL, MOEDA_SIGNAL, SELECT_1, SELECT_2, CONFIRMA, CANCELA,
 																	  LIBERAR, TROCO, FREE_CASH, VALOR_INSERIDO_LD, VALOR_INSERIDO_CLR,
 																	  VALOR_REFRI1_LD, VALOR_REFRI1_CLR, VALOR_REFRI2_LD, VALOR_REFRI2_CLR, ESTOQUE1_LD, ESTOQUE1_CLR,
 																	  ESTOQUE2_LD, ESTOQUE2_CLR, RG_REFRI_LD, RG_REFRI_CLR, VI_eq_VR1,

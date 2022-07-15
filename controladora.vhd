@@ -11,7 +11,6 @@ entity controladora is
 		SELECT_2             : in std_logic;
 		CONFIRMA				   : in std_logic;
 		CANCELA				   : in std_logic;
-		LIB						: out std_logic;
 		LIBERAR					: out std_logic;
 		TROCO				      : out std_logic;
 		FREE_CASH				: out std_logic;
@@ -52,7 +51,7 @@ architecture RTL of controladora is
 begin
 
 	sequencial:
-	process(CEDULA_SIGNAL, MOEDA_SIGNAL, SELECT_1, SELECT_2, CONFIRMA, CANCELA, 
+	process(CLOCK, CEDULA_SIGNAL, MOEDA_SIGNAL, SELECT_1, SELECT_2, CONFIRMA, CANCELA, 
 			  VI_eq_VR1, VI_gt_VR1, VI_eq_VR2, VI_gt_VR2, SELECTED_REFRI, ESTOQUE1_gt_O, ESTOQUE2_gt_O) is
 	variable ESTADO : State_type;
 	begin	
@@ -65,9 +64,9 @@ begin
 			
 				when ESPERA =>
 					
-					if (((SELECT_1='1') and (SELECT_2 ='0')) and (ESTOQUE1_gt_O='1')) then
+					if ((SELECT_1='1') and (SELECT_2 ='0')) then
 						estado_atual <= COCA;
-					elsif (((SELECT_1='0') and (SELECT_2 ='1')) and (ESTOQUE1_gt_O='0')) then
+					elsif ((SELECT_1='0') and (SELECT_2 ='1')) then
 						estado_atual <= GUARANA;
 					else
 						estado_atual <= ESPERA;
@@ -117,10 +116,10 @@ begin
 					
 					if (CANCELA='1') then
 						estado_atual <= CANCELAR;
-					elsif (SELECTED_REFRI='1') then
-						estado_atual <= COCA;
 					else
-						estado_atual <= GUARANA;
+						estado_atual <= COCA;
+					--else
+						--estado_atual <= GUARANA;
 					end if;
 					
 					
