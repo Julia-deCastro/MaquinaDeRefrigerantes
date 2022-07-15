@@ -81,7 +81,7 @@ begin
 				
 				when COCA =>
 					
-					if (CONFIRMA='1') then
+					if ((VI_eq_VR1='1') and (CONFIRMA='1')) then
 						estado_atual <= LIBERAR_1;
 					elsif ((VI_gt_VR1='1') and (CONFIRMA='1')) then
 						estado_atual <= TROCO_1;
