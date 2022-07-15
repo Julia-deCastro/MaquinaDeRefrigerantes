@@ -135,7 +135,7 @@ architecture rtl of maquina_de_refrigerante is
 	
 	begin
 
-		instancia_controladora : controladora port map(CEDULA_SIGNAL, MOEDA_SIGNAL, SELECT_1, SELECT_2, CONFIRMA, CANCELA, LIBE,
+		instancia_controladora : controladora port map(CLOCK, CEDULA_SIGNAL, MOEDA_SIGNAL, SELECT_1, SELECT_2, CONFIRMA, CANCELA, LIBE,
 																	  LIBERAR, TROCO, FREE_CASH, VALOR_INSERIDO_LD, VALOR_INSERIDO_CLR,
 																	  VALOR_REFRI1_LD, VALOR_REFRI1_CLR, VALOR_REFRI2_LD, VALOR_REFRI2_CLR, ESTOQUE1_LD, ESTOQUE1_CLR,
 																	  ESTOQUE2_LD, ESTOQUE2_CLR, RG_REFRI_LD, RG_REFRI_CLR, VI_eq_VR1,
