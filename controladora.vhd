@@ -11,7 +11,7 @@ entity controladora is
 		SELECT_2             : in std_logic;
 		CONFIRMA				   : in std_logic;
 		CANCELA				   : in std_logic;
-		
+		LIB						: out std_logic;
 		LIBERAR					: out std_logic;
 		TROCO				      : out std_logic;
 		FREE_CASH				: out std_logic;
@@ -81,7 +81,7 @@ begin
 				
 				when COCA =>
 					
-					if ((VI_eq_VR1='1') and (CONFIRMA='1')) then
+					if (CONFIRMA='1') then
 						estado_atual <= LIBERAR_1;
 					elsif ((VI_gt_VR1='1') and (CONFIRMA='1')) then
 						estado_atual <= TROCO_1;
@@ -99,9 +99,9 @@ begin
 				when GUARANA =>
 					
 					if ((VI_eq_VR2='1') and (CONFIRMA='1')) then
-						estado_atual <= LIBERAR_1;
+						estado_atual <= LIBERAR_2;
 					elsif ((VI_gt_VR2='1') and (CONFIRMA='1')) then
-						estado_atual <= TROCO_1;
+						estado_atual <= TROCO_2;
 					elsif (CANCELA='1') then
 						estado_atual <= CANCELAR;
 					elsif (MOEDA_SIGNAL='1') then

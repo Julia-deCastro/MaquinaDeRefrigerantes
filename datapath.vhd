@@ -41,11 +41,11 @@ entity datapath is
 					 
 					 CEDULA						: in std_logic_vector (DATA_WIDTH-1 downto 0);
 					 MOEDA						: in std_logic_vector (DATA_WIDTH-1 downto 0);
-					 SELECT_1					: in std_logic;
+					 SELECT_0					: in std_logic;
 					 TROCO_1						: out std_logic_vector (DATA_WIDTH-1 downto 0);
 					 TROCO_2						: out std_logic_vector (DATA_WIDTH-1 downto 0);
-					 QNT_ESTOQUE_1				: out std_logic_vector (DATA_WIDTH-1 downto 0);
-					 QNT_ESTOQUE_2				: out std_logic_vector (DATA_WIDTH-1 downto 0)
+					 QNT_ESTOQUE_1				: out std_logic_vector (4 downto 0);
+					 QNT_ESTOQUE_2				: out std_logic_vector (4 downto 0)
 	
     
     
@@ -150,8 +150,8 @@ architecture rtl of datapath is
 	 
 	 signal  rgSelecionadoOut : std_logic;
 	 signal  muxOut : std_logic;
-	 signal  a : std_logic := '0';
-	 signal  b : std_logic := '1';
+	 signal  a : std_logic := '1';
+	 signal  b : std_logic := '0';
 	 
 	 signal  subtratorOut : std_logic_vector(4 downto 0);
 	 signal  subtrator_estoque1Out : std_logic_vector(4 downto 0);
@@ -181,7 +181,7 @@ architecture rtl of datapath is
 	instancia_estoque1 : registrador_5bits port map(CLOCK, ESTOQUE1_LD, ESTOQUE1_CLR, subtrator_estoque1Out, estoque1Out);
 	instancia_estoque2 : registrador_5bits port map(CLOCK, ESTOQUE2_LD, ESTOQUE2_CLR, subtrator_estoque2Out, estoque2Out);
 	intancia_rg_selecionado : registrador_1bit port map(CLOCK, RG_REFRI_LD, RG_REFRI_CLR, muxOut, rgSelecionadoOut);
-	instancia_mux : mux port map(a, b, SELECT_1, muxOut);
+	instancia_mux : mux port map(a, b, SELECT_0, muxOut);
 	
 
 	-- Instancia somadores
@@ -204,9 +204,12 @@ architecture rtl of datapath is
 	instancia_subtrator_estoque1 : subtrator port map(estoque1Out, subtrator_estoque1Out);
 	instancia_subtrator_estoque2 : subtrator port map(estoque2Out, subtrator_estoque2Out);
 	
+	
 	SELECTED_REFRI <= rgSelecionadoOut;
 	TROCO_1 <= subtrator16Out1;
 	TROCO_2 <= subtrator16Out2;
+	QNT_ESTOQUE_1 <= subtrator_estoque1Out;
+	QNT_ESTOQUE_2 <= subtrator_estoque1Out;
 
 	
 end rtl;
